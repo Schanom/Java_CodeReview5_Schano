@@ -1,0 +1,16 @@
+SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'cr5_famazon_schano';
+
+SELECT AVG(product.amount) FROM product;
+
+SELECT COUNT(*) date FROM invoice WHERE invoice.date > '2020-12-12';
+
+SELECT last_name FROM user WHERE city LIKE 'Vienna';
+
+SELECT user.user_id, user.first_name, user.last_name, user.email, user.city
+FROM user
+LEFT JOIN shoppingcart on shoppingcart.fk_user_id = user.user_id;
+
+SELECT shop.name, shop.address, shop.city, shop.zip, shop.country, shoppingcart.payment_method
+FROM shop
+INNER JOIN shoppingcart ON shop.shop_id = shoppingcart.fk_shop_id
+INNER JOIN product ON shop.shop_id = product.fk_shop_id;
